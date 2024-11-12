@@ -1,0 +1,9 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: test-app
+spec:
+  template:
+    spec:
+      containers:
+        - image: ${APP_DOCKER_IMAGE}
