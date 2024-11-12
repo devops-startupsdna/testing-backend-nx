@@ -8,6 +8,8 @@ source ./deployment/config.sh
 
 # Docker image names
 export APP_DOCKER_IMAGE="${DOCKER_REGISTRY}/app:${BUILD_VERSION}"
+export APP_SERVICE_SPEC="deployment/services/app.service.yaml"
 
 ## Render and deploy app service
-gcloud run services replace $(./deployment/utils/render.sh deployment/services/app.service.yaml) --region=${REGION} --project=${PROJECT_ID}
+yq -i ".spec.template.spec.containers[0].image = \"$APP_DOCKER_IMAGE\"" $APP_SERVICE_SPEC
+gcloud run services replace $APP_SERVICE_SPEC --region=${REGION} --project=${PROJECT_ID}

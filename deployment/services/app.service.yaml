@@ -6,4 +6,4 @@ spec:
   template:
     spec:
       containers:
-        - image: ${APP_DOCKER_IMAGE}
+        - image: europe-west1-docker.pkg.dev/startupsdna-tools/test/app:3033567
