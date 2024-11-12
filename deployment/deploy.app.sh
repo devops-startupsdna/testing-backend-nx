@@ -12,4 +12,5 @@ export APP_SERVICE_SPEC="deployment/services/app.service.yaml"
 
 ## Render and deploy app service
 yq -i ".spec.template.spec.containers[0].image = \"$APP_DOCKER_IMAGE\"" $APP_SERVICE_SPEC
-gcloud run services replace $APP_SERVICE_SPEC --region=${REGION} --project=${PROJECT_ID}
+cat $APP_SERVICE_SPEC
+#gcloud run services replace $APP_SERVICE_SPEC --region=${REGION} --project=${PROJECT_ID}
